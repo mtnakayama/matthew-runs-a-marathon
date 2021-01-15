@@ -14,6 +14,10 @@ MAX_MILES = math.ceil(DISTANCES[-1])
 
 
 def all_sundays(year, fmt='%Y-%m-%d'):
+    """Return a list the string representation of all sundays in a year.
+
+    based on <https://stackoverflow.com/a/48241484/1400059>
+    """
     return pd.date_range(start=str(year), end=str(year+1),
                          freq='W-SUN').strftime(fmt).tolist()
 
