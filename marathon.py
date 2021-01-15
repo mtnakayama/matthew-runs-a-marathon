@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-
 YEAR = 2021
 
 DISTANCES = [3.1, 6.2, 9.3, 13.1, 15.5, 18.6, 21.7, 26.2, 31.1]
-DISTANCE_LABELS = ["5K", "10K", "15K", "½ Marathon", "25K", "30K", "35K", "Marathon", "50K"]
+DISTANCE_LABELS = ["5K", "10K", "15K", "½ Marathon", "25K", "30K", "35K",
+                   "Marathon", "50K"]
 
 MAX_MILES = math.ceil(DISTANCES[-1])
 
@@ -64,6 +64,7 @@ def main():
 
     plt.show()
     fig.savefig(f'{title}.pdf')
+
 
 if __name__ == "__main__":
     main()
