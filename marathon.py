@@ -18,32 +18,38 @@ def all_sundays(year, fmt='%Y-%m-%d'):
 
 
 def main():
-    sundays = all_sundays(2021, fmt='%m/%d')
+    plt.rcParams["font.family"] = "Roboto Slab"
+
+    sundays = all_sundays(2021, fmt='%-m/%-d')
 
     width = 11
     height = 8.5
     fig = plt.figure(figsize=(width, height))
     margin_left = 1.5 / width
-    margin_right = 1 / width
     margin_bottom = 1 / height
     ax = fig.add_axes(
         (
             margin_left,
             margin_bottom,
-            1 - margin_left - margin_right,
+            1 - 2 * margin_left,
             1 - 2 * margin_bottom
         ),
-        xlim=(0, len(sundays)),
+        xlim=(-0.5, len(sundays) - 0.5),
         ylim=(0, MAX_MILES)
     )
 
-    ax.set_title("Matthew Runs a Marathon", fontdict={
-        'fontsize': 20
-    })
+    title = f'Matthew Runs a Marathon {YEAR}'
+    ax.set_title(
+        title,
+        fontsize=36,
+        fontfamily='Abril Fatface',
+        fontweight='normal'
+    )
+
     ax.set_frame_on(False)  # remove border
 
     ax.set_xticks(range(len(sundays)))
-    ax.set_xticklabels(sundays, rotation=75)
+    ax.set_xticklabels(sundays, rotation=90)
 
     ax.set_yticks(DISTANCES)
     y_tick_labels = (f'{dl}\n({d}mi)' for d, dl
@@ -57,6 +63,7 @@ def main():
     ax.grid(b=True, which='minor', axis='y', linestyle=':')
 
     plt.show()
+    fig.savefig(f'{title}.pdf')
 
 if __name__ == "__main__":
     main()
