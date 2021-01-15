@@ -12,6 +12,7 @@ DISTANCE_LABELS = ["5K", "10K", "15K", "½ Marathon", "25K", "30K", "35K",
 
 MAX_MILES = math.ceil(DISTANCES[-1])
 
+
 def all_sundays(year, fmt='%Y-%m-%d'):
     return pd.date_range(start=str(year), end=str(year+1),
                          freq='W-SUN').strftime(fmt).tolist()
